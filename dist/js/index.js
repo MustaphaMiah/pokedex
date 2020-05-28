@@ -1,1 +1,1 @@
-console.log("javaScript connected");const danesh=()=>{console.log("Hello Danesh")};
+console.log("connected to JavaScript"),document.addEventListener("DOMContentLoaded",function(){fetch("https://pokeapi.co/api/v2/pokemon?limit=807/").then(o=>o.json()).then(o=>{console.log(o);const e=[...o.results];console.log(e)})});
