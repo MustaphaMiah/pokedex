@@ -1,14 +1,22 @@
 "use strict";
 var gulp = require("gulp");
 var sass = require("gulp-sass");
+const uglifyes = require("uglify-es");
+const composer = require("gulp-uglify/composer");
+const uglify = composer(uglifyes, console);
+
+gulp.task("compress", function () {
+  return gulp.src("src/js/**/*.js").pipe(uglify()).pipe(gulp.dest("dist/js/"));
+});
 gulp.task("sass", async function () {
   gulp
     .src("src/sass/**/*.scss")
     .pipe(sass().on("error", sass.logError))
-    .pipe(gulp.dest("css/"));
+    .pipe(gulp.dest("dist/css/"));
 });
 gulp.task("watch", function () {
   gulp.watch("src/sass/**/*.scss", gulp.series("sass"));
+  gulp.watch("src/js/**/*.js", gulp.series("compress"));
 });
 
 const nodemon = require("gulp-nodemon");

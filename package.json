@@ -5,8 +5,8 @@
   "main": "index.js",
   "gulp": {
     "src": {
-      "js": "js/",
-      "scss": "scss/",
+      "js": "src/js/",
+      "scss": "src/sass/",
       "images": "images/",
       "html": "/",
       "css": "css/"
@@ -44,6 +44,8 @@
     "browser-sync": "^2.26.7",
     "gulp": "^4.0.2",
     "gulp-nodemon": "^2.5.0",
-    "gulp-sass": "^4.1.0"
+    "gulp-sass": "^4.1.0",
+    "gulp-uglify": "^3.0.2",
+    "uglify-es": "^3.3.9"
   }
 }
