@@ -6,6 +6,8 @@
 console.log("connected to JavaScript");
 document.addEventListener("DOMContentLoaded", function () {
   const apiURL = "https://pokeapi.co/api/v2/pokemon?limit=807/";
+  const pokemonList = document.querySelectorAll(".pokedex-list")[0]; //querySelectorAll always returns an array
+  console.log("musty99", pokemonList);
   fetch(`${apiURL}`) //fetch means get in javaScript aka tells the browser to make a get request. fetch returns a promise which is defined as .then in JS
     .then((response) => {
       // in JS means THEN do this.
@@ -24,22 +26,17 @@ document.addEventListener("DOMContentLoaded", function () {
             return pokemonResponse.json();
           })
           .then((pokemonResponseJSON) => {
-            console.log(pokemonResponseJSON);
-            currentPokemon.image = pokemonResponseJSON.sprites.front_default;
-            console.log(currentPokemon.image);
-            currentPokemon.type = pokemonResponseJSON.types[0].type.name;
-            console.log(currentPokemon.type);
-
-            if (pokemonResponseJSON.types.length > 1) {
-              currentPokemon.secondType =
-                pokemonResponseJSON.types[1].type.name;
-              console.log(currentPokemon.secondType);
-            }
+            // console.log(pokemonResponseJSON);
+            currentPokemon.images = { ...pokemonResponseJSON.sprites }; // add sprite for each pokemon to existing array - " currentPokemon.image = response.sprite" lines 26-28.
+            // console.log(currentPokemon.image);
+            currentPokemon.types = [...pokemonResponseJSON.types]; // add pokemon type for each pokemon to the array we already have
           });
       });
+      return pokemon;
+    })
+    .then((pokemon) => {
+      console.log("musty1", pokemon);
+      // use an iterator method to loop over array and create a html node with image and pokemon id number
+      // append HTML nodes to pokemon list 
     });
 });
-
-// add sprite for each pokemon to existing array - " currentPokemon.image = response.sprite" lines 26-28.
-// add an image and pokemon type for each pokemon to the array we already have
-// use an iterator method to loop over array and create a html node with image and pokemon id number
