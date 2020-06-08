@@ -1,14 +1,5 @@
-body {
-  background-color: yellow;
-}
-.pokedex-container {
-  padding: 0 10rem;
-}
-.pokedex {
-  background: red;
-  padding: 3rem;
-}
-.pokedex-list {
-  background: white;
-  padding: 1rem;
-}
+@import "src/sass/base/_variables.scss";
+
+@import "src/sass/layout/_main.scss";
+@import "src/sass/layout/_header.scss";
+@import "src/sass/layout/_pokedex.scss";

@@ -1,0 +1,23 @@
+.pokedex-container {
+  padding: 0 10rem;
+}
+.pokedex {
+  background: $primary;
+  padding: 3rem;
+}
+.pokedex-list { //ul 
+  background: $secondary;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style-type: none;
+  text-align: center;
+
+  li {
+    width: 16%;
+    background: $third;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+}

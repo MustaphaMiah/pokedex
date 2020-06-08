@@ -1,13 +1,27 @@
 body {
-  background-color: yellow; }
+  background-color: #f1e5d8; }
+
+header {
+  text-align: center;
+  padding: 2rem 0 3rem; }
 
 .pokedex-container {
   padding: 0 10rem; }
 
 .pokedex {
-  background: red;
+  background: #ff0000;
   padding: 3rem; }
 
 .pokedex-list {
-  background: white;
-  padding: 1rem; }
+  background: #ffde00;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style-type: none;
+  text-align: center; }
+  .pokedex-list li {
+    width: 16%;
+    background: #f1e5d8;
+    border-radius: 10px;
+    margin-bottom: 10px; }

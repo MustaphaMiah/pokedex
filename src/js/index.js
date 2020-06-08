@@ -35,9 +35,12 @@ document.addEventListener("DOMContentLoaded", function () {
             currentPokemon.images = { ...pokemonResponseJSON.sprites }; // add sprite for each pokemon to existing array - " currentPokemon.image = response.sprite" lines 26-28.
             currentPokemon.types = [...pokemonResponseJSON.types]; // add pokemon type for each pokemon to the array we already have
             currentPokemon.id = pokemonResponseJSON.id; // add pokemon ID number
+            const typeHTML = currentPokemon.types[1]
+              ? `<p class=${currentPokemon.types[0].type.name}>${currentPokemon.types[0].type.name}</p><p class=${currentPokemon.types[1].type.name}>${currentPokemon.types[1].type.name}</p>`
+              : `<p class=${currentPokemon.types[0].type.name}>${currentPokemon.types[0].type.name}</p>`;
             const pokemonA = parser.parseFromString(
               //parse from string?
-              `<a href="#"><p>${currentPokemon.name}</p><p>ID: ${currentPokemon.id}</p><img src=${currentPokemon.images.front_default} /></a>`,
+              `<a href="#"><p>${currentPokemon.name}</p><p>ID: ${currentPokemon.id}</p>${typeHTML}<img src=${currentPokemon.images.front_default} /></a>`,
               "text/html"
             );
             document
