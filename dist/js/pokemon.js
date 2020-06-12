@@ -1,0 +1,1 @@
+console.log("pokemon page connected",window.location.href),document.addEventListener("DOMContentLoaded",function(){const o=window.location.href,n=o.indexOf("#"),e=o.substring(n+1);fetch(`https://pokeapi.co/api/v2/pokemon/${e}`).then(o=>(console.log("musty99",o),o.json())).then(o=>{console.log(o)})});
