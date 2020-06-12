@@ -24,6 +24,11 @@
     background: $third;
     border-radius: 15px;
     margin-bottom: 0.625rem;
+
+    &:last-child {
+      margin-right: auto;
+      margin-left: 13px;
+    }
     a {
       text-decoration: none;
       display: flex;

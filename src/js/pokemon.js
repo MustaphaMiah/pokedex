@@ -17,10 +17,32 @@ document.addEventListener("DOMContentLoaded", function () {
   const pokemonId = url.substring(hashPoint + 1);
   fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
     .then((pokemonIdResponse) => {
-      console.log("musty99", pokemonIdResponse);
+      //.then lets you control the flow of your JS
       return pokemonIdResponse.json();
     })
     .then((pokemonIdResponseJson) => {
       console.log(pokemonIdResponseJson);
+      const pokemonName = pokemonIdResponseJson.name;
+      console.log(pokemonName);
+      console.log(document.getElementsByClassName("pokemon-name")[0]);
+      document.getElementsByClassName(
+        "pokemon-name"
+      )[0].innerHTML = pokemonName;
+    });
+
+  fetch(`https://pokeapi.co/api/v2/characteristic/${pokemonId}/`)
+    .then((pokemonC) => {
+      return pokemonC.json();
+    })
+    .then((pokemonCJson) => {
+      const pokemonD = pokemonCJson.descriptions[1];
+      console.log(pokemonD);
+    });
+  fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}/`)
+    .then((pokemonS) => {
+      return pokemonS.json();
+    })
+    .then((pokemonSJson) => {
+      console.log(pokemonSJson);
     });
 });

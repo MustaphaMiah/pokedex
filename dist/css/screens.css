@@ -57,6 +57,9 @@ header {
     background: #f1e5d8;
     border-radius: 15px;
     margin-bottom: 0.625rem; }
+    .pokedex-list li:last-child {
+      margin-right: auto;
+      margin-left: 13px; }
     .pokedex-list li a {
       text-decoration: none;
       display: flex;
