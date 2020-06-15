@@ -1,16 +1,4 @@
 console.log("pokemon page connected", window.location.href);
-
-//  cut the number off at the end of the URL or get the number from the URL (slice?)
-// slice off the end of the string, after the hashtag - find hash in string
-// should be a number
-// then cut off from that url, which will give us the pokemon's ID
-// make request using fetch, with the single pokemon's ID. use $string interpolation
-// type out line 30 with id instead of name.
-// no need for a for each loop.
-// then the page should render out the name in the h1 tag.
-// do not try short cut this, write line by line, look at the instructions, slow it down,
-// only use fetch from index.js nothing else, use baby steps.
-
 document.addEventListener("DOMContentLoaded", function () {
   const url = window.location.href;
   const hashPoint = url.indexOf("#");
@@ -21,28 +9,65 @@ document.addEventListener("DOMContentLoaded", function () {
       return pokemonIdResponse.json();
     })
     .then((pokemonIdResponseJson) => {
-      console.log(pokemonIdResponseJson);
       const pokemonName = pokemonIdResponseJson.name;
-      console.log(pokemonName);
-      console.log(document.getElementsByClassName("pokemon-name")[0]);
       document.getElementsByClassName(
         "pokemon-name"
       )[0].innerHTML = pokemonName;
     });
 
   fetch(`https://pokeapi.co/api/v2/characteristic/${pokemonId}/`)
-    .then((pokemonC) => {
-      return pokemonC.json();
-    })
+    .then(handleErrors)
     .then((pokemonCJson) => {
-      const pokemonD = pokemonCJson.descriptions[1];
-      console.log(pokemonD);
-    });
+      console.log("danesh is a p", pokemonCJson);
+      const pokemonD = pokemonCJson.descriptions[1].description;
+      document.getElementsByClassName("description")[0].innerHTML = pokemonD;
+    })
+    .catch((error) => console.log(error));
+
   fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}/`)
     .then((pokemonS) => {
       return pokemonS.json();
     })
     .then((pokemonSJson) => {
-      console.log(pokemonSJson);
+      function findEnglish(x) {
+        if (pokemonSJson.flavor_text_entries[x].language.name !== "en") {
+          x++;
+          return findEnglish(x);
+        }
+        return x;
+      }
+      const i = findEnglish(0);
+      const pokemonA = pokemonSJson.flavor_text_entries[i].flavor_text;
+      document.getElementsByClassName("abilities")[0].innerHTML = pokemonA;
     });
+
+  fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`)
+    .then(handleErrors)
+    .then((pokemonImagesJson) => {
+      pokemonImages = pokemonImagesJson.sprites.front_default;
+      console.log(pokemonImages);
+      const img = document.createElement("img");
+      img.src = pokemonImages;
+      const src = document.getElementById("pokemon-image");
+      src.appendChild(img);
+
+      // Iterate over each value inside the object
+      // Create a new image html node and append to HTML for each image that exist inside the object
+    })
+    .catch((error) => console.log(error));
 });
+function handleErrors(response) {
+  if (!response.ok) {
+    throw Error(response.statusText);
+  }
+  return response.json();
+}
+
+// capitalise title DONEEEE
+// get image rendered on screen
+// get description rendered on screen - i am so gasseddddd, not all pokemons have descriptions
+// get abilities on screen
+// minimal styling / positioning
+// create a next pokemon button on single page (create an a-tag using JS)
+// create a previous pokemon button
+// iterate through images and display all available images on screen - mvp +

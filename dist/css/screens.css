@@ -154,3 +154,9 @@ header {
     .pokedex-list li .dragon {
       background: #7766ee;
       color: #ffffff; }
+
+.pokemon-name {
+  text-transform: capitalize; }
+
+.pokemon {
+  text-align: center; }
