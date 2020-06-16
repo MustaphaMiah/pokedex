@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch(`https://pokeapi.co/api/v2/characteristic/${pokemonId}/`)
     .then(handleErrors)
     .then((pokemonCJson) => {
-      console.log("danesh is a p", pokemonCJson);
       const pokemonD = pokemonCJson.descriptions[1].description;
       document.getElementsByClassName("description")[0].innerHTML = pokemonD;
     })
@@ -44,18 +43,36 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`)
     .then(handleErrors)
     .then((pokemonImagesJson) => {
-      pokemonImages = pokemonImagesJson.sprites.front_default;
-      console.log(pokemonImages);
-      const img = document.createElement("img");
-      img.src = pokemonImages;
-      const src = document.getElementById("pokemon-image");
-      src.appendChild(img);
-
-      // Iterate over each value inside the object
+      const pokemonImages = { ...pokemonImagesJson.sprites };
+      const allPokemonImages = Object.entries(pokemonImages); //TURNED IN TO AN ARRAY!!
+      let revisedImages = [];
+      const validImages = allPokemonImages.filter(function (x) {
+        return x[1] !== null;
+      });
+      if (validImages.length > 2 && validImages.length / 2) {
+        const firstHalf = validImages.slice(0, validImages.length / 2);
+        const secondHalf = validImages.slice(validImages.length / 2);
+        revisedImages = [...secondHalf, ...firstHalf];
+      } else {
+        revisedImages = [...validImages];
+      }
       // Create a new image html node and append to HTML for each image that exist inside the object
+      revisedImages.forEach(function (currentValue) {
+        const container = document.createElement("div");
+        const img = document.createElement("img");
+        img.src = currentValue[1];
+        const string = currentValue[0].replace(/_/g, " "); //using regex to remove underscore and create space in the name
+        const label = document.createElement("p");
+        label.innerHTML = string;
+        container.appendChild(img);
+        container.appendChild(label);
+        const src = document.getElementById("pokemon-image");
+        src.appendChild(container);
+      });
     })
     .catch((error) => console.log(error));
 });
+
 function handleErrors(response) {
   if (!response.ok) {
     throw Error(response.statusText);
@@ -63,11 +80,7 @@ function handleErrors(response) {
   return response.json();
 }
 
-// capitalise title DONEEEE
-// get image rendered on screen
-// get description rendered on screen - i am so gasseddddd, not all pokemons have descriptions
-// get abilities on screen
-// minimal styling / positioning
-// create a next pokemon button on single page (create an a-tag using JS)
-// create a previous pokemon button
-// iterate through images and display all available images on screen - mvp +
+// sort out images in SCSS e.g #701 howlucha 
+// create next pokemon button (a tag)
+// create previous pokemon button (a tag too)
+// back to pokdex button (a tag)

@@ -159,4 +159,13 @@ header {
   text-transform: capitalize; }
 
 .pokemon {
-  text-align: center; }
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem; }
+
+#pokemon-image {
+  display: flex;
+  justify-content: center; }
+  #pokemon-image div {
+    padding: 0 1rem; }
