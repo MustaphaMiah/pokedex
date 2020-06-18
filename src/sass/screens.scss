@@ -1,6 +1,7 @@
-@import "src/sass/base/_fonts.scss";
-@import "src/sass/base/_variables.scss";
+@import "./base/fonts";
+@import "./base/variables";
 
-@import "src/sass/layout/_main.scss";
-@import "src/sass/layout/_header.scss";
-@import "src/sass/layout/_pokedex.scss";
+@import "./layout/main";
+@import "./layout/header";
+@import "./layout/pokedex";
+@import "./layout/pokemon";
