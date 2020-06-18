@@ -1,11 +1,18 @@
-.pokemon-name {
-  text-transform: capitalize;
-}
-.pokemon {
+.single-pokemon-container {
   text-align: center;
   max-width: 800px;
   margin: 0 auto;
   padding: 0 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.pokemon-name {
+  text-transform: capitalize;
+}
+.pokemon {
+  width: 100%;
+  margin-bottom: 2rem;
 }
 #pokemon-image {
   display: flex;
@@ -16,5 +23,22 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+  }
+}
+.prev-button,
+.next-button {
+  button {
+    border: none;
+    background: none;
+    font-weight: bold;
+    font-family: "BalsamiqSans", Arial, Helvetica, sans-serif;
+    font-size: 1.25rem;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+    &:hover {
+      color: $psychic;
+    }
   }
 }
