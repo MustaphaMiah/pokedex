@@ -68,26 +68,25 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .catch((error) => console.log(error));
 
-  // create a tag
-  // create href for a tag
-  // get a tag to come up on html
   const pokemonIdNumber = parseInt(pokemonId);
-  const next = document.createElement("a");
+  const next = document.createElement("button");
+  const prev = document.createElement("button");
   const firstHalfHref = window.location.href.slice(0, hashPoint + 1);
-  console.log("this is first half", firstHalfHref);
-  const nextPokemonId = pokemonIdNumber + 1;
-  console.log("musty 1", `${firstHalfHref}${nextPokemonId}`);
-  //   next.addEventListener("click", function () {
-  //     window.location.href = `${firstHalfHref}${nextPokemonId}`;
-  //   });
-  next.setAttribute("href", `${firstHalfHref}${nextPokemonId}`);
+  const nextPokemonId = pokemonIdNumber === 807 ? 1 : pokemonIdNumber + 1;
+  const prevPokemonId = pokemonIdNumber === 1 ? 807 : pokemonIdNumber - 1;
+  prev.addEventListener("click", function () {
+    window.location.href = `${firstHalfHref}${prevPokemonId}`;
+    location.reload();
+  });
+  next.addEventListener("click", function () {
+    window.location.href = `${firstHalfHref}${nextPokemonId}`;
+    location.reload();
+  });
+  prev.innerHTML = "prev";
   next.innerHTML = "next";
+  document.getElementsByClassName("prev-button")[0].appendChild(prev);
   document.getElementsByClassName("next-button")[0].appendChild(next);
 });
-
-// element.setAttribute(attributename, attributevalue)
-
-// must create button aka change a tag to button !!!!
 
 function handleErrors(response) {
   if (!response.ok) {
@@ -103,8 +102,3 @@ function findEnglish(x, pokemonSJson) {
   }
   return x;
 }
-
-// sort out images in SCSS e.g #701 howlucha doneeeeee
-// create next pokemon button (a tag)
-// create previous pokemon button (a tag too)
-// back to pokdex button (a tag)
