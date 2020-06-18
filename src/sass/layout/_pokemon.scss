@@ -10,7 +10,11 @@
 #pokemon-image {
   display: flex;
   justify-content: center;
+
   div {
     padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
 }

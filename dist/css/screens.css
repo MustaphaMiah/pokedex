@@ -168,4 +168,7 @@ header {
   display: flex;
   justify-content: center; }
   #pokemon-image div {
-    padding: 0 1rem; }
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; }
