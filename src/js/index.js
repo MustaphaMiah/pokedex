@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return pokemon;
     })
     .then((pokemon) => {
+      const pokemonImages = [];
       pokemon.forEach(function (currentPokemon) {
         // use iterator method to go through the array
         const pokemonLi = parser.parseFromString(
@@ -40,15 +41,29 @@ document.addEventListener("DOMContentLoaded", function () {
               : `<p class=${currentPokemon.types[0].type.name}>${currentPokemon.types[0].type.name}</p>`;
             const pokemonA = parser.parseFromString(
               //parse from string?
-              `<a href="./pokemon.html#${currentPokemon.id}"><div><p><span>ID: ${currentPokemon.id}</span></p><p class="pokemon-name">${currentPokemon.name}</p>${typeHTML}</div><img src=${currentPokemon.images.front_default} /></a>`,
+              `<a href="./pokemon.html#${currentPokemon.id}"><div><p><span>ID: ${currentPokemon.id}</span></p><p class="pokemon-name">${currentPokemon.name}</p>${typeHTML}</div>
+              <img class="lazy" src="https://cdn.glitch.com/3a5b333c-942b-4088-9930-e7ea1e516118%2Fplaceholder.png?v=1560442648212" datasrc=${currentPokemon.images.front_default} /></a>`,
               "text/html"
             );
             document
               .getElementById(`${currentPokemon.name}`)
               .appendChild(pokemonA.body.firstChild);
+            // console.log(document.getElementById(`${currentPokemon.name}`).querySelector("img"));
+            pokemonImages.push(
+              document
+                .getElementById(`${currentPokemon.name}`)
+                .querySelector("img")
+            );
           });
       });
+      console.log(pokemonImages);
+      return pokemonImages;
+    })
+    .then((pokemonImages) => {
+      console.log("after.then", pokemonImages);
+      const lazyLoader = mustysLazyLoad({
+        images: pokemonImages,
+      });
+      console.log("lazy loader", lazyLoader);
     });
-  // use an iterator method to loop over array and create a html node with image and pokemon id number
-  // append HTML nodes to pokemon list - HTML node: is a html element.
 });

@@ -1,0 +1,1 @@
+const mustysLazyLoad=(e={})=>{const s=e.images?e.images:document.querySelectorAll("img.lazy");return{showImages:()=>{console.log(s)},images:s}};
