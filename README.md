@@ -57,3 +57,7 @@ Solution:
 decided to append the pokemon placeholder first BEFORE the fetch request was made
 which in turn allowed all the pokemon to display in order.
 append the information for the pokemon in to the already created Li's
+
+## Future Plans 
+
+Request 20 pokmeon initially, and only request more pokemon as you scroll down. This would be to increase user experience and speed. 

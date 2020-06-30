@@ -1,17 +1,12 @@
-// wait for document load
-// on load make get request for all Pokemon
-// https://pokeapi.co/api/v2/pokemon?limit=807
-// make a reuqest for all pokemon
-
 console.log("connected to JavaScript");
 document.addEventListener("DOMContentLoaded", function () {
   const apiURL = "https://pokeapi.co/api/v2/pokemon?limit=807/";
-  const pokemonList = document.querySelectorAll(".pokedex-list")[0]; //querySelectorAll always returns an array
-  const parser = new DOMParser(); // DOMParser is a built in JS functionality. //keyword new creates a new object!
+  const pokemonList = document.querySelectorAll(".pokedex-list")[0]; //querySelectorAll always returns an array - manipulating the dom
+  const parser = new DOMParser(); // DOMParser is a built in JS functionality. //keyword "new" creates a new object!
   fetch(`${apiURL}`) //fetch means "GET" in javaScript aka tells the browser to make a get request. fetch returns a promise
     .then((response) => {
       // in JS means THEN do this. ONLY USE IT TO EXTEND PROMISES
-      return response.json();
+      return response.json(); // use a built in JS function to return our response as a JSON.
     })
     .then((responseJSON) => {
       const pokemon = [...responseJSON.results]; // create an array of all  807 pokemon //... is a spread operator, it spreads open the array
@@ -25,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
           `<li id=${currentPokemon.name}></li>`,
           "text/html"
         );
-        pokemonList.appendChild(pokemonLi.body.firstChild); // append child?
+        pokemonList.appendChild(pokemonLi.body.firstChild); // append child
 
         fetch(`https://pokeapi.co/api/v2/pokemon/${currentPokemon.name}`) // make a request for each pokemon
           .then((pokemonResponse) => {
@@ -40,7 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
               : `<p class=${currentPokemon.types[0].type.name}>${currentPokemon.types[0].type.name}</p>`;
             const pokemonA = parser.parseFromString(
               //parse from string?
-              `<a href="./pokemon.html#${currentPokemon.id}"><div><p><span>ID: ${currentPokemon.id}</span></p><p class="pokemon-name">${currentPokemon.name}</p>${typeHTML}</div><img src=${currentPokemon.images.front_default} /></a>`,
+              `<a href="./pokemon.html#${currentPokemon.id}"><div><p><span>ID: ${currentPokemon.id}</span></p><p class="pokemon-name">${currentPokemon.name}</p>${typeHTML}</div>
+              <img class="lazy" src="${currentPokemon.images.front_default}" /></a>`,
               "text/html"
             );
             document
@@ -49,6 +45,4 @@ document.addEventListener("DOMContentLoaded", function () {
           });
       });
     });
-  // use an iterator method to loop over array and create a html node with image and pokemon id number
-  // append HTML nodes to pokemon list - HTML node: is a html element.
 });
