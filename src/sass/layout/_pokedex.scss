@@ -1,11 +1,58 @@
 .pokedex-container {
-  padding: 0 10rem;
+  @media (min-width: $bp-xs) {
+    padding: 0 1rem;
+  }
+  @media (min-width: $bp-lg) {
+    padding: 0 10rem;
+  }
 }
 .pokedex {
   background: $primary;
   padding: 3rem;
+  padding-top: 2rem;
   border-radius: 15px;
+  @media (min-width: $bp-xs) {
+    padding: 1rem;
+  }
+  @media (min-width: $bp-sm) {
+    padding: 2rem;
+  }
 }
+.circle-styling {
+  background: $primary;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  .circle {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    &.big {
+      height: 25px;
+      width: 25px;
+      margin-right: 10px;
+    }
+    &.blue {
+      background: $water;
+      border: 2px solid $white;
+    }
+    &.red {
+      background: $fire;
+      margin-right: 5px;
+      border: 1px solid $black;
+    }
+    &.yellow {
+      background: $electric;
+      margin-right: 5px;
+      border: 1px solid $black;
+    }
+    &.green {
+      background: $grass;
+      border: 1px solid $black;
+    }
+  }
+}
+
 .pokedex-list {
   //ul
   background: $secondary;
@@ -24,6 +71,12 @@
     background: $third;
     border-radius: 15px;
     margin-bottom: 0.625rem;
+    @media (min-width: $bp-xs) {
+      width: 48%;
+    }
+    @media (min-width: $bp-sm) {
+      width: 19%;
+    }
 
     &:last-child {
       margin-right: auto;
@@ -40,7 +93,7 @@
     div {
       p:first-child {
         span {
-          background-color: black;
+          background-color: $black;
           color: $white;
           border-radius: 5px;
           padding: 0.375rem 0.75rem 0.25rem;
@@ -51,7 +104,7 @@
       .pokemon-name {
         font-size: 1.25rem;
         text-transform: capitalize;
-        color: black;
+        color: $black;
       }
     }
     .fire,
