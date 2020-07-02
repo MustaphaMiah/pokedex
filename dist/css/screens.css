@@ -229,9 +229,13 @@ header {
   margin-bottom: 2rem; }
 
 .home {
+  display: flex;
   text-decoration: none;
-  color: black;
+  color: #000000;
   font-size: 1.25rem; }
+  @media (min-width: 992px) {
+    .home {
+      padding-left: 115px; } }
   .home:focus {
     outline: none; }
   .home:hover {
@@ -239,10 +243,11 @@ header {
 
 #pokemon-image {
   display: flex;
-  justify-content: center; }
-  @media (max-width: 480px) {
+  justify-content: center;
+  flex-flow: wrap; }
+  @media (min-width: 768px) {
     #pokemon-image {
-      flex-flow: wrap; } }
+      flex-flow: nowrap; } }
   #pokemon-image div {
     padding: 0 1rem;
     display: flex;

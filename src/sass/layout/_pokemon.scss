@@ -15,9 +15,15 @@
   margin-bottom: 2rem;
 }
 .home {
+  display: flex;
   text-decoration: none;
-  color: black;
+  color: $black;
   font-size: 1.25rem;
+  @media (min-width: $bp-md) {
+    padding-left: 115px;
+
+  }
+
   &:focus {
     outline: none;
   }
@@ -28,8 +34,9 @@
 #pokemon-image {
   display: flex;
   justify-content: center;
-  @media (max-width: $bp-ms) {
-    flex-flow: wrap;
+  flex-flow: wrap;
+  @media (min-width: $bp-sm) {
+    flex-flow: nowrap;
   }
   div {
     padding: 0 1rem;
