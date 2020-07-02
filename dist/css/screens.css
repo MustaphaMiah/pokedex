@@ -132,6 +132,9 @@ header {
       font-size: 1.25rem;
       text-transform: capitalize;
       color: #000000; }
+      @media (max-width: 480px) {
+        .pokedex-list li div .pokemon-name {
+          font-size: 1rem; } }
     .pokedex-list li .fire,
     .pokedex-list li .flying,
     .pokedex-list li .poison,
@@ -225,9 +228,21 @@ header {
   width: 100%;
   margin-bottom: 2rem; }
 
+.home {
+  text-decoration: none;
+  color: black;
+  font-size: 1.25rem; }
+  .home:focus {
+    outline: none; }
+  .home:hover {
+    color: #e961a7; }
+
 #pokemon-image {
   display: flex;
   justify-content: center; }
+  @media (max-width: 480px) {
+    #pokemon-image {
+      flex-flow: wrap; } }
   #pokemon-image div {
     padding: 0 1rem;
     display: flex;

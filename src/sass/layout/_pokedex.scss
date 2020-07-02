@@ -105,6 +105,9 @@
         font-size: 1.25rem;
         text-transform: capitalize;
         color: $black;
+        @media (max-width: $bp-ms) {
+          font-size: 1rem;
+        }
       }
     }
     .fire,
