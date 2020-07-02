@@ -14,10 +14,23 @@
   width: 100%;
   margin-bottom: 2rem;
 }
+.home {
+  text-decoration: none;
+  color: black;
+  font-size: 1.25rem;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    color: $psychic;
+  }
+}
 #pokemon-image {
   display: flex;
   justify-content: center;
-
+  @media (max-width: $bp-ms) {
+    flex-flow: wrap;
+  }
   div {
     padding: 0 1rem;
     display: flex;
