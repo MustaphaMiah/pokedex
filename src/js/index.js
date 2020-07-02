@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const pokemonA = parser.parseFromString(
               //parse from string?
               `<a href="./pokemon.html#${currentPokemon.id}"><div><p><span>ID: ${currentPokemon.id}</span></p><p class="pokemon-name">${currentPokemon.name}</p>${typeHTML}</div>
-              <img class="lazy" src="${currentPokemon.images.front_default}" /></a>`,
+              <img class="lazy" src="${currentPokemon.images.front_default}" /><p class="view"> View More <p></a>`,
               "text/html"
             );
             document
