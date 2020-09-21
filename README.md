@@ -44,7 +44,7 @@ Search bar on single and landing page?
 
 ## Problems
 
-problem1:
+problem 1:
 pokemon showing up in wrong order
 
 why?
@@ -58,6 +58,14 @@ decided to append the pokemon placeholder first BEFORE the fetch request was mad
 which in turn allowed all the pokemon to display in order.
 append the information for the pokemon in to the already created Li's
 
+problem 2:
+API was updated as more language were added on to the Pokemon descriptions. My Pokedex app was displaying the pokemon descriptions in Spanish. 
+
+Solution:
+wrote a piece of code which would only return the last array in the array of descriptions. The last array was the description in the enlish language
+
 ## Future Plans 
 
 Request 20 pokmeon initially, and only request more pokemon as you scroll down. This would be to increase user experience and speed. 
+
+Also try and get Lazy Loading implemented. As the page can be quite slow to load. 
