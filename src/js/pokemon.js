@@ -19,8 +19,9 @@ document.addEventListener("DOMContentLoaded", function() {
     fetch(`https://pokeapi.co/api/v2/characteristic/${pokemonId}/`)
         .then(handleErrors)
         .then((pokemonCJson) => {
-            const pokemonD = pokemonCJson.descriptions[1].description;
-            document.getElementsByClassName("description")[0].innerHTML = pokemonD;
+            const pokemonDescriptions = pokemonCJson.descriptions;
+            const lastDescription = pokemonDescriptions[pokemonDescriptions.length - 1].description;
+            document.getElementsByClassName("description")[0].innerHTML = lastDescription;
         })
         .catch((error) => console.log(error));
 
