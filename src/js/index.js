@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 fetch(`https://pokeapi.co/api/v2/pokemon/${currentPokemon.name}`) // make a request for each pokemon
                     .then((pokemonResponse) => {
-                        console.log("This is my pokemon response", pokemonResponse);
+                        // console.log("This is my pokemon response", pokemonResponse);
                         return pokemonResponse.json();
                     })
                     .then((pokemonResponseJSON) => {
