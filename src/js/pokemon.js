@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
         .then((pokemonIdResponse) => {
             //.then lets you control the flow of your JS
-            console.log(pokemonIdResponse);
+            // console.log(pokemonIdResponse);
             return pokemonIdResponse.json();
         })
         .then((pokemonIdResponseJson) => {
@@ -38,11 +38,11 @@ document.addEventListener("DOMContentLoaded", function() {
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`)
         .then(handleErrors)
         .then((pokemonImagesJson) => {
-            console.log("pokemon images", pokemonImagesJson);
+            // console.log("pokemon images", pokemonImagesJson);
             let pokemonImages = {...pokemonImagesJson.sprites };
             delete pokemonImages.other && delete pokemonImages.versions;
             const allPokemonImages = Object.entries(pokemonImages); //TURNED IN TO AN ARRAY!!
-            console.log("all Pokemon Images", allPokemonImages);
+            // console.log("all Pokemon Images", allPokemonImages);
             let revisedImages = [];
             const validImages = allPokemonImages.filter(function(x) {
                 // to get all images that are NOT null because the response was also giving us images with a value of null.
